@@ -1,0 +1,12 @@
+FROM quay.io/keycloak/keycloak:latest
+ENV KC_DB=postgres
+WORKDIR /opt/keycloak
+
+# Add extensions
+ADD --chown=keycloak:keycloak https://github.com/klausbetz/apple-identity-provider-keycloak/releases/download/1.7.0/apple-identity-provider-1.7.0.jar /opt/keycloak/providers/apple-identity-provider-1.7.0.jar
+ADD --chown=keycloak:keycloak https://github.com/smeetsee/keycloak-protocol-cas/releases/download/24.0.2-beta1/keycloak-protocol-cas-24.0.2.jar /opt/keycloak/providers/keycloak-protocol-cas-24.0.2.jar
+ADD --chown=keycloak:keycloak https://github.com/wadahiro/keycloak-discord/releases/download/v0.5.0/keycloak-discord-0.5.0.jar /opt/keycloak/providers/keycloak-discord-0.5.0.jar
+ADD --chown=keycloak:keycloak https://github.com/eosc-kc/keycloak-orcid/releases/download/1.2.0/keycloak-orcid-1.2.0.jar /opt/keycloak/providers/keycloak-orcid-1.2.0.jar
+
+# Build Keycloak
+RUN /opt/keycloak/bin/kc.sh build
