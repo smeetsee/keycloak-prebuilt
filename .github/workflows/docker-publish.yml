@@ -108,6 +108,7 @@ jobs:
 
   merge:
     runs-on: ubuntu-latest
+    if: ${{ github.event_name != 'pull_request' }}
     needs:
       - docker
     steps:
@@ -232,6 +233,7 @@ jobs:
 
   merge_extensions:
     runs-on: ubuntu-latest
+    if: ${{ github.event_name != 'pull_request' }}
     needs:
       - docker_extensions
     steps:
@@ -356,6 +358,7 @@ jobs:
 
   merge_customized_extensions:
     runs-on: ubuntu-latest
+    if: ${{ github.event_name != 'pull_request' }}
     needs:
       - docker_customized_extensions
     steps:
