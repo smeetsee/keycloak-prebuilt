@@ -9,4 +9,4 @@ ADD --chown=keycloak:keycloak https://github.com/wadahiro/keycloak-discord/relea
 ADD --chown=keycloak:keycloak https://github.com/eosc-kc/keycloak-orcid/releases/download/1.4.0/keycloak-orcid.jar /opt/keycloak/providers/keycloak-orcid.jar
 
 # Build Keycloak
-RUN /opt/keycloak/bin/kc.sh build --features=scripts
+RUN /opt/keycloak/bin/kc.sh build
